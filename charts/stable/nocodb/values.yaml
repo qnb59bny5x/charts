@@ -1,6 +1,6 @@
 image:
   repository: tccr.io/truecharts/nocodb
-  tag: v0.107.5@sha256:4a64e56115720169bc63ed179959c8a63a98678dda846e37f6079a524758751c
+  tag: v0.109.6@sha256:8701c61af38ac95013d9fea0c06a1e53bd9f65c9a238c7933c871800b9f08a46
   pullPolicy: IfNotPresent
 service:
   main:
