@@ -1,6 +1,6 @@
 image:
   repository: tccr.io/truecharts/scratch
-  tag: latest@sha256:1a9a10a0a5f5cb5fe4b30ac6d9c56ff87ad47f3f3490bafb6938fc155230131b
+  tag: latest@sha256:f4d99ffcd318372f92ecf9433a42348c1150f190c77253f5b73d835389b3da60
   pullPolicy: IfNotPresent
 manifestManager:
   enabled: false
