@@ -81,7 +81,7 @@ spec:
           host: {{ .acmednsHost }}
           accountSecretRef:
             name: {{ $issuerSecretName }}
-            key: acmedns.json
+            key: acmednsJson
       {{- end -}}
     {{- end }}
 ---
@@ -100,6 +100,6 @@ stringData:
   akaccessToken: {{ .akaccessToken | default "" }}
   doaccessToken: {{ .doaccessToken | default "" }}
   rfctsigSecret: {{ .rfctsigSecret | default "" }}
-  acmedns.json: {{ .acmednsJson | default "" }}
+  acmednsJson: {{ .acmednsJson | default "" }}
 {{- end }}
 {{- end -}}
