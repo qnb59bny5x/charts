@@ -5,7 +5,7 @@
   {{- if not (mustRegexMatch "^[a-z]+(-?[a-z]){0,63}-?[a-z]+$" .name) -}}
     {{- fail "ACME - Expected name to be all lowercase with hyphens, but not start or end with a hyphen" -}}
   {{- end -}}
-  {{- $validTypes := list "HTTP01" "cloudflare" "route53" "digitalocean" "akamai" "rfc2136" -}}
+  {{- $validTypes := list "HTTP01" "cloudflare" "route53" "digitalocean" "akamai" "rfc2136" "acmedns" -}}
   {{- if not (mustHas .type $validTypes) -}}
     {{- fail (printf "Expected ACME type to be one of [%s], but got [%s]" (join ", " $validTypes) .type) -}}
   {{- end -}}
@@ -78,7 +78,7 @@ spec:
             key: rfctsigSecret
       {{- else if eq .type "acmeDNS" }}
         acmeDNS:
-          host: {{ .host }}
+          host: {{ .acmednsHost }}
           accountSecretRef:
             name: {{ $issuerSecretName }}
             key: acmedns.json
