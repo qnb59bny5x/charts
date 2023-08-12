@@ -10,6 +10,12 @@
     {{- fail (printf "Expected ACME type to be one of [%s], but got [%s]" (join ", " $validTypes) .type) -}}
   {{- end -}}
   {{- $issuerSecretName := printf "%s-clusterissuer-secret" .name }}
+  {{- $acmednsDict := dict -}}
+  {{- if eq .type "acmedns" }}
+    {{- range .acmednsConfig }}
+      {{- $_ := set $acmednsDict .domain (omit . "domain") -}}
+    {{- end }}
+  {{- end -}}
 ---
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
@@ -100,6 +106,6 @@ stringData:
   akaccessToken: {{ .akaccessToken | default "" }}
   doaccessToken: {{ .doaccessToken | default "" }}
   rfctsigSecret: {{ .rfctsigSecret | default "" }}
-  acmednsJson: {{ toJson .acmednsDict }}
+  acmednsJson: {{ toJson $acmednsDict }}
 {{- end }}
 {{- end -}}
