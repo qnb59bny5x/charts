@@ -76,6 +76,12 @@ spec:
           tsigSecretSecretRef:
             name: {{ $issuerSecretName }}
             key: rfctsigSecret
+      {{- else if eq .type "acmeDNS" }}
+        acmeDNS:
+          host: {{ .host }}
+          accountSecretRef:
+            name: {{ $issuerSecretName }}
+            key: acmedns.json
       {{- end -}}
     {{- end }}
 ---
@@ -94,5 +100,6 @@ stringData:
   akaccessToken: {{ .akaccessToken | default "" }}
   doaccessToken: {{ .doaccessToken | default "" }}
   rfctsigSecret: {{ .rfctsigSecret | default "" }}
+  acmedns.json: {{ .acmednsJson | default "" }}
 {{- end }}
 {{- end -}}
