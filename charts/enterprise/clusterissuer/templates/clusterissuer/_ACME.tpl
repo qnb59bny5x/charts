@@ -76,7 +76,7 @@ spec:
           tsigSecretSecretRef:
             name: {{ $issuerSecretName }}
             key: rfctsigSecret
-      {{- else if eq .type "acmeDNS" }}
+      {{- else if eq .type "acmedns" }}
         acmeDNS:
           host: {{ .acmednsHost }}
           accountSecretRef:
