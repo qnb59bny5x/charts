@@ -100,6 +100,6 @@ stringData:
   akaccessToken: {{ .akaccessToken | default "" }}
   doaccessToken: {{ .doaccessToken | default "" }}
   rfctsigSecret: {{ .rfctsigSecret | default "" }}
-  acmednsJson: {{ .acmednsJson | default "" }}
+  acmednsJson: {{ toJson .acmednsDict }}
 {{- end }}
 {{- end -}}
